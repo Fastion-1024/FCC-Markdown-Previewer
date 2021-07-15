@@ -1,6 +1,7 @@
 import DockContainer from './Components/DockContainer';
 import Editor from './Components/Editor';
 import Previewer from './Components/Previewer';
+import { DockProvider } from './dockContext';
 
 function App() {
     return (
@@ -10,10 +11,12 @@ function App() {
                     <span>{'{ '}</span>MarkdownPreviewer<span>{' }'}</span>
                 </h1>
             </header>
-            <DockContainer className='container'>
-                <Editor />
-                <Previewer />
-            </DockContainer>
+            <DockProvider>
+                <DockContainer className='container'>
+                    <Editor />
+                    <Previewer />
+                </DockContainer>
+            </DockProvider>
         </main>
     );
 }
