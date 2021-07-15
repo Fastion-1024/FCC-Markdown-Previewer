@@ -1,22 +1,35 @@
-import { useState } from 'react';
-import { FaEye, FaExpandAlt, FaCopy } from 'react-icons/fa';
+import { BiCopy, BiExpand, BiCollapse, BiDetail } from 'react-icons/bi';
+import { useDockContext } from '../dockContext';
+import { useMarkdownContext } from '../markdownContext';
 
 const Previewer = () => {
-    const [text, setText] = useState('');
+    const { previewerHTML } = useMarkdownContext();
+    const { isPanel2Maximised, togglePanel2ExpandCollapse } = useDockContext();
 
     return (
         <>
             <header className='editor-header'>
                 <div>
-                    <FaEye className='header-icon' />
+                    <BiDetail className='header-icon' />
                     <h2>Previewer</h2>
                 </div>
                 <div>
-                    <FaCopy className='header-icon' />
-                    <FaExpandAlt className='header-icon' />
+                    <button className='icon-btn'>
+                        <BiCopy />
+                    </button>
+                    <button
+                        className='icon-btn'
+                        onClick={togglePanel2ExpandCollapse}
+                    >
+                        {isPanel2Maximised ? <BiCollapse /> : <BiExpand />}
+                    </button>
                 </div>
             </header>
-            <textarea className='previewer' readOnly={true} value={text} />
+            <div
+                id='preview'
+                className='previewer'
+                dangerouslySetInnerHTML={{ __html: previewerHTML }}
+            />
         </>
     );
 };

@@ -1,52 +1,47 @@
-import { useState, useEffect } from 'react';
-import { FaCode, FaExpandAlt, FaCopy } from 'react-icons/fa';
-import {
-    BiDockLeft,
-    BiDockRight,
-    BiDockTop,
-    BiDockBottom,
-} from 'react-icons/bi';
+import { BiCopy, BiExpand, BiCollapse, BiCodeAlt } from 'react-icons/bi';
+import { useDockContext } from '../dockContext';
+import { useMarkdownContext } from '../markdownContext';
+import DropDownButton from './DropDownButton';
 
 const Editor = () => {
-    const [text, setText] = useState('');
-    const [lineNumbers, setLineNumbers] = useState('1');
+    const { editorText, setEditorText, editorLineNumbers } =
+        useMarkdownContext();
 
-    useEffect(() => {
-        var content = text.split('\n');
-        let newLineNumbers = '';
-
-        for (let i = 1; i <= content.length; i++) {
-            newLineNumbers += `${i} \n`;
-        }
-
-        setLineNumbers(newLineNumbers);
-    }, [text]);
+    const { isPanel1Maximised, togglePanel1ExpandCollapse } = useDockContext();
 
     return (
         <>
             <header className='editor-header'>
                 <div>
-                    <FaCode className='header-icon' />
+                    <BiCodeAlt className='header-icon' />
                     <h2>Editor</h2>
                 </div>
                 <div>
-                    <FaCopy className='header-icon' />
-                    <BiDockLeft className='header-icon' />
-                    <FaExpandAlt className='header-icon' />
+                    <button className='icon-btn'>
+                        <BiCopy />
+                    </button>
+                    <DropDownButton />
+                    <button
+                        className='icon-btn'
+                        onClick={togglePanel1ExpandCollapse}
+                    >
+                        {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
+                    </button>
                 </div>
             </header>
             <div className='editor-input-container'>
                 <textarea
                     className='line-numbers'
                     readOnly={true}
-                    value={lineNumbers}
+                    value={editorLineNumbers}
                 />
 
                 <textarea
+                    id='editor'
                     className='editor-input'
                     wrap='off'
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    value={editorText}
+                    onChange={(e) => setEditorText(e.target.value)}
                 />
             </div>
         </>
