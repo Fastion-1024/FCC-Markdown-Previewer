@@ -9,9 +9,10 @@ const MarkdownProvider = ({ children }) => {
     const [editorText, setEditorText] = useState('');
     const [editorLineNumbers, setEditorLineNumbers] = useState('1');
     const [previewerHTML, setPreviewerHTML] = useState('');
+    const [isLightThemeActive, setIsLightThemeActive] = useState(true);
 
     useEffect(() => {
-        // fetchPlaceholderText();
+        fetchPlaceholderText();
     }, []);
 
     useEffect(() => {
@@ -46,6 +47,10 @@ const MarkdownProvider = ({ children }) => {
         setPreviewerHTML(clean);
     };
 
+    const toggleTheme = () => {
+        setIsLightThemeActive(!isLightThemeActive);
+    };
+
     return (
         <MarkdownContext.Provider
             value={{
@@ -55,6 +60,8 @@ const MarkdownProvider = ({ children }) => {
                 setEditorLineNumbers,
                 previewerHTML,
                 sePreviewerHTML: setPreviewerHTML,
+                isLightThemeActive,
+                toggleTheme,
             }}
         >
             {children}
