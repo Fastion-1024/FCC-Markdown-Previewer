@@ -17,7 +17,11 @@ function App() {
                     <span>{'{ '}</span>MarkdownPreviewer<span>{' }'}</span>
                 </h1>
                 <button className='theme-toggle' onClick={toggleTheme}>
-                    {isLightThemeActive ? <BiSun /> : <BiMoon />}
+                    {isLightThemeActive ? (
+                        <BiSun className='theme-toggle-light-icon' />
+                    ) : (
+                        <BiMoon className='theme-toggle-dark-icon' />
+                    )}
                     {isLightThemeActive ? <BiToggleLeft /> : <BiToggleRight />}
                 </button>
             </header>
