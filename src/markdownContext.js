@@ -39,6 +39,7 @@ const MarkdownProvider = ({ children }) => {
     };
 
     const updatePreviewerText = () => {
+        marked.setOptions({ breaks: true });
         const dirty = marked(editorText);
         const clean = DOMPurify.sanitize(dirty, {
             USE_PROFILES: { html: true },
