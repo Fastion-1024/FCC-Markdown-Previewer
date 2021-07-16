@@ -13,12 +13,12 @@ const DropDownButton = () => {
 
     return (
         <div className='dropdown'>
-            <button className='dropdown-btn icon-btn'>
+            <button className='dropdown-btn'>
                 <BiLayout />
             </button>
             <div className='dropdown-content'>
                 <button
-                    className='icon-btn'
+                    className='dropdown-btn'
                     onClick={() => {
                         setIsRow(true);
                         setIsReversed(false);
@@ -27,7 +27,7 @@ const DropDownButton = () => {
                     <BiDockLeft />
                 </button>
                 <button
-                    className='icon-btn'
+                    className='dropdown-btn'
                     onClick={() => {
                         setIsRow(true);
                         setIsReversed(true);
@@ -36,7 +36,7 @@ const DropDownButton = () => {
                     <BiDockRight />
                 </button>
                 <button
-                    className='icon-btn'
+                    className='dropdown-btn'
                     onClick={() => {
                         setIsRow(false);
                         setIsReversed(false);
@@ -45,7 +45,7 @@ const DropDownButton = () => {
                     <BiDockTop />
                 </button>
                 <button
-                    className='icon-btn'
+                    className='dropdown-btn'
                     onClick={() => {
                         setIsRow(false);
                         setIsReversed(true);
