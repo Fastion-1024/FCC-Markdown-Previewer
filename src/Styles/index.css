@@ -96,20 +96,15 @@ Header
 /* Theme Toggle */
 .theme-toggle {
     position: absolute;
-    right: 0;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
     font-size: 2.5rem;
-    color: var(--clr-text-header);
+    color: var(--clr-text-secondary);
 }
 
-.theme-toggle button {
-    outline: none;
-    border: none;
-    background: none;
-    font-size: 2.5rem;
+.theme-toggle:hover {
     color: var(--clr-text-header);
 }
 

@@ -15,17 +15,11 @@ function App() {
             <header className='header'>
                 <h1>
                     <span>{'{ '}</span>MarkdownPreviewer<span>{' }'}</span>
-                    <div className='theme-toggle'>
-                        {isLightThemeActive ? <BiSun /> : <BiMoon />}
-                        <button onClick={toggleTheme}>
-                            {isLightThemeActive ? (
-                                <BiToggleLeft />
-                            ) : (
-                                <BiToggleRight />
-                            )}
-                        </button>
-                    </div>
                 </h1>
+                <button className='theme-toggle' onClick={toggleTheme}>
+                    {isLightThemeActive ? <BiSun /> : <BiMoon />}
+                    {isLightThemeActive ? <BiToggleLeft /> : <BiToggleRight />}
+                </button>
             </header>
             <DockProvider>
                 <DockContainer className='container'>
