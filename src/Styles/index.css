@@ -280,11 +280,13 @@ DropDownButton
     position: absolute;
     z-index: 1;
     padding-top: 0.4rem;
+    left: -0.3rem;
 }
 
 .dropdown-content button {
     display: block;
     background: var(--clr-header-secondary);
+    font-size: 2.2rem;
 }
 
 .dropdown:hover .dropdown-content {
