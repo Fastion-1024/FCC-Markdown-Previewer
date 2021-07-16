@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { BiCopy, BiExpand, BiCollapse, BiCodeAlt } from 'react-icons/bi';
 import { useDockContext } from '../dockContext';
 import { useMarkdownContext } from '../markdownContext';
@@ -8,6 +9,11 @@ const Editor = () => {
         useMarkdownContext();
 
     const { isPanel1Maximised, togglePanel1ExpandCollapse } = useDockContext();
+    const scrollRef = useRef(null);
+
+    const handleScroll = (e) => {
+        scrollRef.current.scrollTop = e.target.scrollTop;
+    };
 
     return (
         <>
@@ -34,6 +40,7 @@ const Editor = () => {
                     className='line-numbers'
                     readOnly={true}
                     value={editorLineNumbers}
+                    ref={scrollRef}
                 />
 
                 <textarea
@@ -42,6 +49,7 @@ const Editor = () => {
                     wrap='off'
                     value={editorText}
                     onChange={(e) => setEditorText(e.target.value)}
+                    onScroll={(e) => handleScroll(e)}
                 />
             </div>
         </>
