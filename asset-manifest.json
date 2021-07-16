@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/FCC-Markdown-Previewer/static/css/main.aa7413eb.chunk.css",
+    "main.js": "/FCC-Markdown-Previewer/static/js/main.23069f85.chunk.js",
+    "main.js.map": "/FCC-Markdown-Previewer/static/js/main.23069f85.chunk.js.map",
+    "runtime-main.js": "/FCC-Markdown-Previewer/static/js/runtime-main.b218ce87.js",
+    "runtime-main.js.map": "/FCC-Markdown-Previewer/static/js/runtime-main.b218ce87.js.map",
+    "static/js/2.07caebfc.chunk.js": "/FCC-Markdown-Previewer/static/js/2.07caebfc.chunk.js",
+    "static/js/2.07caebfc.chunk.js.map": "/FCC-Markdown-Previewer/static/js/2.07caebfc.chunk.js.map",
+    "index.html": "/FCC-Markdown-Previewer/index.html",
+    "static/css/main.aa7413eb.chunk.css.map": "/FCC-Markdown-Previewer/static/css/main.aa7413eb.chunk.css.map",
+    "static/js/2.07caebfc.chunk.js.LICENSE.txt": "/FCC-Markdown-Previewer/static/js/2.07caebfc.chunk.js.LICENSE.txt",
+    "static/media/placeholderMD.98c01269.md": "/FCC-Markdown-Previewer/static/media/placeholderMD.98c01269.md"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b218ce87.js",
+    "static/js/2.07caebfc.chunk.js",
+    "static/css/main.aa7413eb.chunk.css",
+    "static/js/main.23069f85.chunk.js"
+  ]
+}
