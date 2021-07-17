@@ -5,8 +5,12 @@ import { useMarkdownContext } from '../markdownContext';
 import DropDownButton from './DropDownButton';
 
 const Editor = () => {
-    const { editorText, setEditorText, editorLineNumbers } =
-        useMarkdownContext();
+    const {
+        editorText,
+        setEditorText,
+        editorLineNumbers,
+        copyTextToClipboard,
+    } = useMarkdownContext();
 
     const { isPanel1Maximised, togglePanel1ExpandCollapse } = useDockContext();
     const scrollRef = useRef(null);
@@ -23,7 +27,10 @@ const Editor = () => {
                     <h2>Editor</h2>
                 </div>
                 <div>
-                    <button className='icon-btn'>
+                    <button
+                        className='icon-btn'
+                        onClick={() => copyTextToClipboard(editorText)}
+                    >
                         <BiCopy />
                     </button>
                     <DropDownButton />

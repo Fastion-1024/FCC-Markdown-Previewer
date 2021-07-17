@@ -44,12 +44,50 @@ const MarkdownProvider = ({ children }) => {
         const clean = DOMPurify.sanitize(dirty, {
             USE_PROFILES: { html: true },
         });
-        console.log(clean);
         setPreviewerHTML(clean);
     };
 
     const toggleTheme = () => {
         setIsLightThemeActive(!isLightThemeActive);
+    };
+
+    const copyTextToClipboard = (text) => {
+        if (!navigator.clipboard) {
+            fallbackCopyTextToClipboard(text);
+            return;
+        }
+        navigator.clipboard.writeText(text).then(
+            function () {
+                console.log('Async: Copying to clipboard was successful!');
+            },
+            function (error) {
+                console.error('Async: Could not copy text: ', error);
+            }
+        );
+    };
+
+    const fallbackCopyTextToClipboard = (text) => {
+        // Create new element
+        var element = document.createElement('textarea');
+        // Set value (string to be copied)
+        element.value = text;
+        // Set non-editable to avoid focus and move outside of view
+        element.setAttribute('readonly', '');
+        element.style = { position: 'absolute', left: '-9999px' };
+        document.body.appendChild(element);
+        // Select text inside element
+        element.select();
+        // Copy text to clipboard
+        try {
+            let wasSuccessful = document.execCommand('copy');
+            let message = wasSuccessful ? 'successful' : 'unsuccessful';
+            console.log(`Fallback: Copying text command was ${message}`);
+        } catch (error) {
+            console.error('Fallback: Was unable to copy', error);
+        }
+
+        // Remove temporary element
+        document.body.removeChild(element);
     };
 
     return (
@@ -63,6 +101,7 @@ const MarkdownProvider = ({ children }) => {
                 sePreviewerHTML: setPreviewerHTML,
                 isLightThemeActive,
                 toggleTheme,
+                copyTextToClipboard,
             }}
         >
             {children}

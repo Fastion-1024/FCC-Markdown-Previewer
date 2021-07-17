@@ -3,7 +3,7 @@ import { useDockContext } from '../dockContext';
 import { useMarkdownContext } from '../markdownContext';
 
 const Previewer = () => {
-    const { previewerHTML } = useMarkdownContext();
+    const { previewerHTML, copyTextToClipboard } = useMarkdownContext();
     const { isPanel2Maximised, togglePanel2ExpandCollapse } = useDockContext();
 
     return (
@@ -14,7 +14,10 @@ const Previewer = () => {
                     <h2>Previewer</h2>
                 </div>
                 <div>
-                    <button className='icon-btn'>
+                    <button
+                        className='icon-btn'
+                        onClick={() => copyTextToClipboard(previewerHTML)}
+                    >
                         <BiCopy />
                     </button>
                     <button
