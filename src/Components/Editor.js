@@ -1,5 +1,11 @@
 import { useRef } from 'react';
-import { BiCopy, BiExpand, BiCollapse, BiCodeAlt } from 'react-icons/bi';
+import {
+    BiCopy,
+    BiExpand,
+    BiCollapse,
+    BiCodeAlt,
+    BiDetail,
+} from 'react-icons/bi';
 import { useDockContext } from '../dockContext';
 import { useMarkdownContext } from '../markdownContext';
 import DropDownButton from './DropDownButton';
@@ -12,12 +18,46 @@ const Editor = () => {
         copyTextToClipboard,
     } = useMarkdownContext();
 
-    const { isPanel1Maximised, togglePanel1ExpandCollapse } = useDockContext();
+    const {
+        isPanel1Maximised,
+        togglePanel1ExpandCollapse,
+        windowDimensions,
+        switchPanels,
+    } = useDockContext();
     const scrollRef = useRef(null);
 
     const handleScroll = (e) => {
         scrollRef.current.scrollTop = e.target.scrollTop;
     };
+
+    const toolbarSmall = (
+        <div>
+            <button
+                className='icon-btn'
+                onClick={() => copyTextToClipboard(editorText)}
+            >
+                <BiCopy />
+            </button>
+            <button className='icon-btn' onClick={switchPanels}>
+                <BiDetail />
+            </button>
+        </div>
+    );
+
+    const toolbarLarge = (
+        <div>
+            <button
+                className='icon-btn'
+                onClick={() => copyTextToClipboard(editorText)}
+            >
+                <BiCopy />
+            </button>
+            <DropDownButton />
+            <button className='icon-btn' onClick={togglePanel1ExpandCollapse}>
+                {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
+            </button>
+        </div>
+    );
 
     return (
         <>
@@ -26,21 +66,7 @@ const Editor = () => {
                     <BiCodeAlt className='header-icon' />
                     <h2>Editor</h2>
                 </div>
-                <div>
-                    <button
-                        className='icon-btn'
-                        onClick={() => copyTextToClipboard(editorText)}
-                    >
-                        <BiCopy />
-                    </button>
-                    <DropDownButton />
-                    <button
-                        className='icon-btn'
-                        onClick={togglePanel1ExpandCollapse}
-                    >
-                        {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
-                    </button>
-                </div>
+                {windowDimensions.width <= 768 ? toolbarSmall : toolbarLarge}
             </header>
             <div className='editor-input-container'>
                 <textarea
