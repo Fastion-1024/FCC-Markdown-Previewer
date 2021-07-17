@@ -273,7 +273,8 @@ Editor
 }
 
 .line-numbers {
-    max-width: 20%;
+    /* max-width: 20%; */
+    max-width: calc(1.4rem * 4);
     color: var(--clr-text-secondary);
     background: var(--clr-bg-secondary);
     border: none;
