@@ -9,6 +9,7 @@ import {
 import { useDockContext } from '../dockContext';
 import { useMarkdownContext } from '../markdownContext';
 import DropDownButton from './DropDownButton';
+import Tooltip from './Tooltip';
 
 const Editor = () => {
     const {
@@ -32,30 +33,41 @@ const Editor = () => {
 
     const toolbarSmall = (
         <div>
-            <button
-                className='icon-btn'
-                onClick={() => copyTextToClipboard(editorText)}
-            >
-                <BiCopy />
-            </button>
-            <button className='icon-btn' onClick={switchPanels}>
-                <BiDetail />
-            </button>
+            <Tooltip content='Copy' position='bottom'>
+                <button
+                    className='icon-btn'
+                    onClick={() => copyTextToClipboard(editorText)}
+                >
+                    <BiCopy />
+                </button>
+            </Tooltip>
+            <Tooltip content='Previewer'>
+                <button className='icon-btn' onClick={switchPanels}>
+                    <BiDetail />
+                </button>
+            </Tooltip>
         </div>
     );
 
     const toolbarLarge = (
         <div>
-            <button
-                className='icon-btn'
-                onClick={() => copyTextToClipboard(editorText)}
-            >
-                <BiCopy />
-            </button>
+            <Tooltip content='Copy'>
+                <button
+                    className='icon-btn'
+                    onClick={() => copyTextToClipboard(editorText)}
+                >
+                    <BiCopy />
+                </button>
+            </Tooltip>
             <DropDownButton />
-            <button className='icon-btn' onClick={togglePanel1ExpandCollapse}>
-                {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
-            </button>
+            <Tooltip content={isPanel1Maximised ? 'Collapse' : 'Expand'}>
+                <button
+                    className='icon-btn'
+                    onClick={togglePanel1ExpandCollapse}
+                >
+                    {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
+                </button>
+            </Tooltip>
         </div>
     );
 
