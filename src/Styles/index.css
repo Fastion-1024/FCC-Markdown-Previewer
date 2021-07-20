@@ -453,3 +453,45 @@ Previewer Markdown
     padding-left: 1rem;
     margin: 1rem 0;
 }
+
+@media only screen and (max-width: 768px) {
+    /* 
+    ====== 
+    Header
+    ======
+    */
+    .header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: clamp(1.6rem, 0.8941rem + 3.1373vw, 2.4rem);
+        /* font-size: 2rem; */
+    }
+
+    .header h1 span {
+        font-size: 2.3rem;
+    }
+
+    .theme-toggle {
+        position: static;
+        margin-top: 0.5rem;
+    }
+
+    /* 
+    ====== 
+    Editor
+    ======
+    */
+
+    .editor-input,
+    .line-numbers {
+        font-size: 1.2rem;
+    }
+
+    .line-numbers {
+        width: calc(1.2rem * 4);
+    }
+}
