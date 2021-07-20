@@ -245,6 +245,10 @@ Editor
     padding: 0.4rem;
 }
 
+.editor-header > div > div {
+    margin-left: 0.4rem;
+}
+
 .editor-input-container {
     display: flex;
     flex-direction: row;
@@ -261,7 +265,6 @@ Editor
     border: none;
     background: none;
     font-size: 1.6rem;
-    margin-left: 0.4rem;
     color: var(--clr-icons-primary);
     display: flex;
     padding: 0.2rem;
@@ -331,7 +334,8 @@ DropDownButton
     align-items: center;
     z-index: 1;
     padding: 0.4rem;
-    left: -0.3rem;
+    right: 50%;
+    transform: translateX(50%);
     border-bottom-left-radius: 0.2em;
     border-bottom-right-radius: 0.2em;
     background: var(--clr-header-secondary);
