@@ -14,6 +14,8 @@ Variables
     --clr-text-header: #4e3c69;
     --clr-icons-primary: #f2f8fc;
     --clr-outline-primary: #bf9cac;
+    --clr-links: #854fce;
+    --clr-links-active: #8d5670;
 }
 
 .light-theme {
@@ -26,6 +28,8 @@ Variables
     --clr-text-header: #4e3c69;
     --clr-icons-primary: #f2f8fc;
     --clr-outline-primary: #bf9cac;
+    --clr-links: #854fce;
+    --clr-links-active: #8d5670;
 }
 
 .dark-theme {
@@ -38,6 +42,8 @@ Variables
     --clr-text-header: #df5376;
     --clr-icons-primary: #0cb6b2;
     --clr-outline-primary: #93a1a1;
+    --clr-links: #0cb6b2;
+    --clr-links-active: #93a1a1;
 }
 
 /* 
@@ -452,6 +458,14 @@ Previewer Markdown
 #preview ol {
     padding-left: 1rem;
     margin: 1rem 0;
+}
+
+#preview a {
+    color: var(--clr-links);
+}
+
+#preview a:active {
+    color: var(--clr-links-active);
 }
 
 @media only screen and (max-width: 768px) {
