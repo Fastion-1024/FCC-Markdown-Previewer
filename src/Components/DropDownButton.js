@@ -16,7 +16,8 @@ const DropDownButton = () => {
         <div className='dropdown'>
             <Tooltip content='Layout'>
                 <button className='dropdown-btn'>
-                    <BiLayout />
+                    <BiLayout aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Layout</span>
                 </button>
             </Tooltip>
             <div className='dropdown-content'>
@@ -28,7 +29,10 @@ const DropDownButton = () => {
                             setIsReversed(false);
                         }}
                     >
-                        <BiDockLeft />
+                        <BiDockLeft aria-hidden={true} focusable={false} />
+                        <span className='visually-hidden'>
+                            Dock Editor Left
+                        </span>
                     </button>
                 </Tooltip>
                 <Tooltip content='Dock Right' position='left'>
@@ -39,7 +43,10 @@ const DropDownButton = () => {
                             setIsReversed(true);
                         }}
                     >
-                        <BiDockRight />
+                        <BiDockRight aria-hidden={true} focusable={false} />
+                        <span className='visually-hidden'>
+                            Dock Editor Right
+                        </span>
                     </button>
                 </Tooltip>
                 <Tooltip content='Dock Top' position='left'>
@@ -50,7 +57,8 @@ const DropDownButton = () => {
                             setIsReversed(false);
                         }}
                     >
-                        <BiDockTop />
+                        <BiDockTop aria-hidden={true} focusable={false} />
+                        <span className='visually-hidden'>Dock Editor Top</span>
                     </button>
                 </Tooltip>
                 <Tooltip content='Dock Bottom' position='left'>
@@ -61,7 +69,10 @@ const DropDownButton = () => {
                             setIsReversed(true);
                         }}
                     >
-                        <BiDockBottom />
+                        <BiDockBottom aria-hidden={true} focusable={false} />
+                        <span className='visually-hidden'>
+                            Dock Editor Bottom
+                        </span>
                     </button>
                 </Tooltip>
             </div>

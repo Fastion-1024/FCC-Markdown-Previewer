@@ -25,12 +25,14 @@ const Previewer = () => {
                     className='icon-btn'
                     onClick={() => copyTextToClipboard(previewerHTML)}
                 >
-                    <BiCopy />
+                    <BiCopy aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Copy Previewer HTML</span>
                 </button>
             </Tooltip>
             <Tooltip content='Editor'>
                 <button className='icon-btn' onClick={switchPanels}>
-                    <BiCodeAlt />
+                    <BiCodeAlt aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Switch To Editor</span>
                 </button>
             </Tooltip>
         </div>
@@ -43,7 +45,8 @@ const Previewer = () => {
                     className='icon-btn'
                     onClick={() => copyTextToClipboard(previewerHTML)}
                 >
-                    <BiCopy />
+                    <BiCopy aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Copy Previewer HTML</span>
                 </button>
             </Tooltip>
             <Tooltip content={isPanel2Maximised ? 'Collapse' : 'Expand'}>
@@ -51,7 +54,21 @@ const Previewer = () => {
                     className='icon-btn'
                     onClick={togglePanel2ExpandCollapse}
                 >
-                    {isPanel2Maximised ? <BiCollapse /> : <BiExpand />}
+                    {isPanel2Maximised ? (
+                        <>
+                            <BiCollapse aria-hidden={true} focusable={false} />
+                            <span className='visually-hidden'>
+                                Collapse Previewer
+                            </span>
+                        </>
+                    ) : (
+                        <>
+                            <BiExpand aria-hidden={true} focusable={false} />
+                            <span className='visually-hidden'>
+                                Expand Previewer
+                            </span>
+                        </>
+                    )}
                 </button>
             </Tooltip>
         </div>
@@ -61,7 +78,11 @@ const Previewer = () => {
         <>
             <header className='editor-header'>
                 <div>
-                    <BiDetail className='header-icon' />
+                    <BiDetail
+                        className='header-icon'
+                        aria-hidden={true}
+                        focusable={false}
+                    />
                     <h2>Previewer</h2>
                 </div>
                 {windowDimensions.width <= 768 ? toolbarSmall : toolbarLarge}

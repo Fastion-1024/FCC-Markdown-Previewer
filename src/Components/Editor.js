@@ -38,12 +38,14 @@ const Editor = () => {
                     className='icon-btn'
                     onClick={() => copyTextToClipboard(editorText)}
                 >
-                    <BiCopy />
+                    <BiCopy aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Copy Editor Text</span>
                 </button>
             </Tooltip>
             <Tooltip content='Previewer'>
                 <button className='icon-btn' onClick={switchPanels}>
-                    <BiDetail />
+                    <BiDetail aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Switch To Previewer</span>
                 </button>
             </Tooltip>
         </div>
@@ -56,7 +58,8 @@ const Editor = () => {
                     className='icon-btn'
                     onClick={() => copyTextToClipboard(editorText)}
                 >
-                    <BiCopy />
+                    <BiCopy aria-hidden={true} focusable={false} />
+                    <span className='visually-hidden'>Copy Editor text</span>
                 </button>
             </Tooltip>
             <DropDownButton />
@@ -65,7 +68,21 @@ const Editor = () => {
                     className='icon-btn'
                     onClick={togglePanel1ExpandCollapse}
                 >
-                    {isPanel1Maximised ? <BiCollapse /> : <BiExpand />}
+                    {isPanel1Maximised ? (
+                        <>
+                            <BiCollapse aria-hidden={true} focusable={false} />
+                            <span className='visually-hidden'>
+                                Collapse Editor
+                            </span>
+                        </>
+                    ) : (
+                        <>
+                            <BiExpand aria-hidden={true} focusable={false} />
+                            <span className='visually-hidden'>
+                                Expand Editor
+                            </span>
+                        </>
+                    )}
                 </button>
             </Tooltip>
         </div>
@@ -75,24 +92,38 @@ const Editor = () => {
         <>
             <header className='editor-header'>
                 <div>
-                    <BiCodeAlt className='header-icon' />
+                    <BiCodeAlt
+                        className='header-icon'
+                        aria-hidden={true}
+                        focusable={false}
+                    />
                     <h2>Editor</h2>
                 </div>
                 {windowDimensions.width <= 768 ? toolbarSmall : toolbarLarge}
             </header>
             <div className='editor-input-container'>
+                <label htmlFor='lineNumbers' className='visually-hidden'>
+                    Editor Line Numbers
+                </label>
                 <textarea
+                    id='lineNumbers'
                     className='line-numbers'
                     readOnly={true}
+                    focusable={false}
                     value={editorLineNumbers}
                     ref={scrollRef}
+                    tabIndex='-1'
                 />
 
+                <label htmlFor='editor' className='visually-hidden'>
+                    Markdown Editor
+                </label>
                 <textarea
                     id='editor'
                     className='editor-input'
                     wrap='off'
                     value={editorText}
+                    autoFocus={true}
                     onChange={(e) => setEditorText(e.target.value)}
                     onScroll={(e) => handleScroll(e)}
                 />
