@@ -131,6 +131,13 @@ Header
     border-radius: 15%;
 }
 
+.theme-toggle:focus:not(:focus-visible) {
+    color: var(--clr-text-secondary);
+    background: none;
+    border-radius: none;
+    outline: none;
+}
+
 .theme-toggle:hover .theme-toggle-light-icon {
     animation: rotation 5s infinite linear;
 }
@@ -298,6 +305,13 @@ Editor
     outline: 0.1em solid var(--clr-outline-primary);
 }
 
+.icon-btn:focus:not(:focus-visible) {
+    color: var(--clr-icons-primary);
+    background: none;
+    border-radius: none;
+    outline: none;
+}
+
 .line-numbers,
 .editor-input {
     resize: none;
@@ -389,6 +403,13 @@ DropDownButton
 .dropdown-btn:focus {
     outline: 0.1em solid var(--clr-outline-primary);
 }
+
+/* .dropdown-btn:focus:not(:focus-visible) {
+    color: var(--clr-icons-primary);
+    background: none;
+    border-radius: none;
+    outline: none;
+} */
 
 .dropdown-content button {
     font-size: 2.2rem;
